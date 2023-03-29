@@ -17,44 +17,47 @@ function App() {
   }, [])
   
   
-  const getCountries = ()=>{
-     fetch(`https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=fffd8756c99940b68765700f58e5616f`)
-    .then(res =>res.json())
-    .then(data =>{
-      console.log(data.articles)
-      setNews(data.articles)
-    })
+  const getCountries = async ()=>{
+     const res = await fetch(`https://randomuser.me/api/?results=100`)
+     const data = await res.json()
+     console.log(data.results)
+     setNews(data.results)
    
   }
 
   
-  const getNewsBySearch = (search)=>{
-    fetch(`https://newsapi.org/v2/top-headlines?country=us&q=${search}&apiKey=fffd8756c99940b68765700f58e5616f`)
-    .then(res =>res.json())
-    .then(data =>{
-      console.log(data.articles)
-      setNews(data.articles)
-    })
-  }
 
 
   const getNewsByCategory = (category)=>{
-    fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=fffd8756c99940b68765700f58e5616f`)
+    fetch(`https://randomuser.me/api/?results=100&gender=${category}`)
     .then(res =>res.json())
     .then(data =>{
-      console.log(data.articles)
-      setNews(data.articles)
+      console.log(data.results)
+      setNews(data.results)
     })
   }
+
+  
+
+
+  const getNewsByNumber = (number)=>{
+    fetch(`https://randomuser.me/api/?results=${number}`)
+    .then(res =>res.json())
+    .then(data =>{
+      console.log(data.results)
+      setNews(data.results)
+    })
+  }
+
 
   return (
     <div className="App">
       <Header/>
-      <Navbar getNewsByCategory={getNewsByCategory} getNewsBySearch={getNewsBySearch}/>
+      <Navbar getNewsByCategory={getNewsByCategory} getNewsByNumber={getNewsByNumber} />
       <div className="main-content">
         {
           news.map((n,i)=>(
-            <CountryCard key={i} {...n} />
+            <CountryCard key={i} number={i+1} {...n} />
           ))
 
           

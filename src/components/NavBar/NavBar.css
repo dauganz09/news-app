@@ -1,9 +1,9 @@
 .navbar {
     min-width : 1440px;
-    
-    height : 90px;
+    height : 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 10px;
+   
 }

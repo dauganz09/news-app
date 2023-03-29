@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
         <div className="header-container">
-        <h1>News App</h1>
+        <h1>Random User Generator App</h1>
         </div>
         
     </header>

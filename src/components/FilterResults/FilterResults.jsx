@@ -6,6 +6,7 @@ const FilterResults = ({getNewsByNumber}) => {
 
   return (
     <select onChange={(e)=>getNewsByNumber(e.target.value)}>
+         <option selected disabled>Show # users</option>
         <option value="50">All</option>
         <option value="30">30</option>
         <option value="20">20</option>
